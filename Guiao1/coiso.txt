@@ -1,0 +1,4 @@
+ola, pessoal de sistemas operativos
+tudo ok?
+
+:q
