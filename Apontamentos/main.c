@@ -50,31 +50,11 @@ int procfile(int argc,char *argv[])
     // }
     // wait(1);
     // return 0;
-
-    char* args[3];
-    char a[] = "< ";
-    char b[] = " >";
-    args[0] = (char *) malloc(sizeof(a) + sizeof(b) + sizeof(argv[0]));
-    args[1] = (char *) malloc(sizeof(argv[1]));
-    args[2] = NULL;
-
-    strcpy( args[0], a );
-    strcat( args[0], argv[0] );
-    strcat( args[0], b );
-    //printf("%s\n",args[0]);
-    strcpy(args[1],argv[1]);
-    //printf("%s\n",args[1]);
-
-    int output = dup(1);
-    int fd = open(args[1],O_CREAT|O_WRONLY|O_TRUNC,0666); dup2(fd,STDOUT_FILENO);
-
-    execvp(argv[2],args); // O programa não termina sozinho
-
+    int fd1 = open(argv[0],O_RDONLY,0666);
+    int fd = open(argv[1],O_CREAT|O_WRONLY|O_TRUNC,0666); dup2(fd,STDOUT_FILENO);
+    dup2(fd1,0);
+    execvp(argv[2],NULL);
     close(fd);
-
-    fflush(stdout);
-    dup2(output,1);
-
 }
 
 int main (int argc, char *argv[]){

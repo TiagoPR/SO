@@ -23,7 +23,6 @@ int main(){
         close(pd[1]);
         execlp("wc", "wc", "-l", NULL); // o wc fica a espera do endLine do ls no pipe
         perror("wc");
-        _exit(1);
     }
 
     return 0; // EXIT_SUCESS => #include <stdlib.h>
