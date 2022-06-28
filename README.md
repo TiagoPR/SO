@@ -1,4 +1,4 @@
 # SO
 
-Repositório das aulas
+Repositório das aulas.\n
 Guião a Guião
